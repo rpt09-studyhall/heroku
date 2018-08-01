@@ -1,14 +1,13 @@
 // YOUR CODE HERE:
 //var $chats = $('#chats');
 var messages = [];
+const KEYS = require('../../keys.js')
 
-// const id = process.env.id 
-// const key = process.env.KEY 
 const app = {
   init: () => {
     $.ajaxPrefilter(function(settings, _, jqXHR) {
-      jqXHR.setRequestHeader('X-Parse-Application-Id', '28D19FA3745BA5570D04B4C37461926637EB45FF');
-      jqXHR.setRequestHeader('X-Parse-REST-API-Key', 'D89B0AB80513AA4936590C82C75F81E80C2BF4E3');
+      jqXHR.setRequestHeader('X-Parse-Application-Id', KEYS.id );
+      jqXHR.setRequestHeader('X-Parse-REST-API-Key', KEYS.KEY);
    });
     $(document).ready(() => {
       $('#newlobby').hide();
