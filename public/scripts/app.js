@@ -2,8 +2,8 @@
 //var $chats = $('#chats');
 var messages = [];
 
-const id = process.env.id 
-const key = process.env.KEY 
+// const id = process.env.id 
+// const key = process.env.KEY 
 const app = {
   init: () => {
     $.ajaxPrefilter(function(settings, _, jqXHR) {
