@@ -1,7 +1,6 @@
 const express = require('express')
 const path = require('path')
 const PORT = process.env.PORT || 5000
-const KEYS = require('./keys.js')
 const app = new express()
 const mongoose = require('mongoose')
 mongoose.connect('mongodb://rpt09:hackreactorrpt09@ds111082.mlab.com:11082/rpt09-chat');
