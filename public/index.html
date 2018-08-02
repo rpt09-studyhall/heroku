@@ -1,52 +1,86 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>chatterbox</title>
-    <link rel="stylesheet" href="styles/styles.css">
 
-    <!-- dependencies -->
-    <!-- <script src="bower_components/jquery/dist/jquery.js"></script> -->
+<head>
+  <meta charset="utf-8">
+  <title>chatterbox</title>
+  <link rel="stylesheet" type="text/css" href="bower_components/jquery-emoji-picker/css/jquery.emojipicker.css">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emoji-picker/1.1.5/css/emoji.css" /> -->
+  <link rel="stylesheet" type="text/css" href="bower_components/jquery-emoji-picker/css/jquery.emojipicker.a.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/emoji-picker/1.1.5/js/util.js"></script>
+  <link rel="stylesheet" href="styles/styles.css">
+  <!-- dependencies -->
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+
+  <script src="bower_components/underscore/underscore.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore.js"></script>
+  <script src="bower_components/handlebars/handlebars.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.js"></script>
+  <script src="bower_components/moment/min/moment.min.js"></script>
+   
+   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/locale/af.js"></script> -->
+ <!-- Emoji Data -->
+  <script type="text/javascript" src="bower_components/jquery-emoji-picker/js/jquery.emojipicker.js"></script>
+  <script type="text/javascript" src="bower_components/jquery-emoji-picker/js/jquery.emojis.js"></script>
+  
+  <script>
     
-    <script
-    src="https://code.jquery.com/jquery-3.3.1.min.js"
-    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore.js"></script>
-    
-    <!-- <script src="bower_components/underscore/underscore.js"></script> -->
-    <script>
-      // YOU DO NOT NEED TO EDIT THIS CODE
-      if (!/(&|\?)username=/.test(window.location.search)) {
-        var newSearch = window.location.search;
-        if (newSearch !== '' & newSearch !== '?') {
-          newSearch += '&';
-        }
-        newSearch += 'username=' + (prompt('What is your name?') || 'anonymous');
-        window.location.search = newSearch;
+    // YOU DO NOT NEED TO EDIT THIS CODE
+    if (!/(&|\?)username=/.test(window.location.search)) {
+      var newSearch = window.location.search;
+      if (newSearch !== '' & newSearch !== '?') {
+        newSearch += '&';
       }
-    </script>
-    <!-- your scripts -->
-    <!-- <script src="env/config.js"></script> -->
-    <script src="scripts/app.js"></script>
-  </head>
-  <body>
-    <div id="main">
-      <h1>chatterbox</h1>
-      <!-- Your HTML goes here! -->
-      <select id="roomSelect">
-        <option id="createlobby" value="createlobby">create new lobby</option>
-      </select>
-      <input id="newlobby" type="text">
-      <form action="#" id="send" method="post">
-        <input type="text" name="message" id="message"/>
-        <input type="submit" name="submit" class="submit"/>
-      </form>
-      <!-- <form id="send" action="#">
-        <input type="text" id="message">
-        <input type="submit" class="submit" value="submit">
-      </form> -->
+      newSearch += 'username=' + (prompt('What is your name?') || 'anonymous');
+      window.location.search = newSearch;
+    }
+  </script>
+  <!-- your scripts -->
+  <script src="scripts/app.js"></script>
+</head>
+
+<body>
+  <div id="main">
+    <div class='menu'>
+        <h1>chatterbox</h1>
+        <div>
+            <select id='roomSelect'>
+            </select>
+            <div class='menuItem'>
+              <button id="addRoom" class='btn'> Add room</button>
+            </div>
+          </div>
     </div>
-    <div id="chats"></div>
-  </body>
+    <!-- Your HTML goes here! -->
+    <div class="inputWrapper">
+      <div>
+        <form action="#" id="send" method="post">
+          <input type="text" name="message" id="message" placeholder="SAY HI!" data-emojiable=true />
+          <button type="submit" name="submit" class="submit">
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div id="chats"></div>
+
+  <script id="msg-template" type="text/x-handlebars-template">
+  <div>
+    <div class="clear"></div>
+    <div class="bubble {{#if fromMe}} from-me {{else}} from-them {{/if}}">
+      <div class='date'>
+        {{date}}
+      </div>
+      <div class="message">
+        <h1 class="username">{{username}} <span class='beFriend'> ⭐ </span></h1>
+        <div class="messageBody">
+          {{message}}
+        </div>
+      </div>
+    </div>
+  </div>
+</script>
+</body>
+
 </html>
