@@ -72,8 +72,8 @@ App.prototype.clearMessages = function () {
 App.prototype.fetch = function () {
   const that = this;
   $.ajaxPrefilter(function (settings, _, jqXHR) {
-    jqXHR.setRequestHeader('X-Parse-Application-Id', '28D19FA3745BA5570D04B4C37461926637EB45FF');
-    jqXHR.setRequestHeader('X-Parse-REST-API-Key', 'D89B0AB80513AA4936590C82C75F81E80C2BF4E3');
+    jqXHR.setRequestHeader('X-Parse-Application-Id', process.eventNames.PARSEID);
+    jqXHR.setRequestHeader('X-Parse-REST-API-Key', process.env.PARSEKEY);
   });
   $.ajax({
     url: this.server,
@@ -94,10 +94,10 @@ App.prototype.fetch = function () {
 };
 
 App.prototype.send = function (msgObj) {
-    $.ajaxPrefilter(function (settings, _, jqXHR) {
-        jqXHR.setRequestHeader('X-Parse-Application-Id', '28D19FA3745BA5570D04B4C37461926637EB45FF');
-        jqXHR.setRequestHeader('X-Parse-REST-API-Key', 'D89B0AB80513AA4936590C82C75F81E80C2BF4E3');
-      });
+  $.ajaxPrefilter(function (settings, _, jqXHR) {
+    jqXHR.setRequestHeader('X-Parse-Application-Id', process.eventNames.PARSEID);
+    jqXHR.setRequestHeader('X-Parse-REST-API-Key', process.env.PARSEKEY);
+  });
   $.ajax({
     url: this.server,
     type: 'POST',
