@@ -1,8 +1,8 @@
 {
-  "name": "Start on Heroku: Node.js",
-  "description": "A barebones Node.js app using Express 4",
-  "repository": "https://github.com/heroku/node-js-getting-started",
-  "logo": "https://cdn.rawgit.com/heroku/node-js-getting-started/master/public/node.svg",
+  "name": "RPT09 studyhall",
+  "description": "Student showcase app",
+  "repository": "https://github.com/rpt09-studyhall/heroku",
+  "logo": "https://emoji.slack-edge.com/T5B2RG0JW/9ersfire/cfbdd48a4352db0e.gif",
   "keywords": ["node", "express", "heroku"],
   "image": "heroku/nodejs"
 }
